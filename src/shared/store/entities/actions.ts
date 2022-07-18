@@ -1,5 +1,4 @@
 import { getServices, getBrands, getStyles } from 'shared/api';
-import { getErrorMessage } from 'shared/helpers';
 
 import type { AppDispatch } from '../types';
 import { entitiesSlice } from './slice';
@@ -21,12 +20,12 @@ export const fetchServices = () => async (dispatch: AppDispatch) => {
     dispatch(fetchServicesStarted());
 
     const {
-      data: { data: terms },
+      data: { data: services },
     } = await getServices();
 
-    dispatch(servicesFetched(terms));
-  } catch (error: unknown) {
-    dispatch(fetchServicesFailed(getErrorMessage(error)));
+    dispatch(servicesFetched(services));
+  } catch {
+    dispatch(fetchServicesFailed('Failed to fetch Services'));
   }
 };
 
@@ -35,12 +34,12 @@ export const fetchBrands = () => async (dispatch: AppDispatch) => {
     dispatch(fetchBrandsStarted());
 
     const {
-      data: { data: brandsTerms },
+      data: { data: brands },
     } = await getBrands();
 
-    dispatch(brandsFetched(brandsTerms));
+    dispatch(brandsFetched(brands));
   } catch (error: unknown) {
-    dispatch(fetchBrandsFailed(getErrorMessage(error)));
+    dispatch(fetchBrandsFailed('Failed to fetch Brands'));
   }
 };
 
@@ -54,6 +53,6 @@ export const fetchStyles = () => async (dispatch: AppDispatch) => {
 
     dispatch(stylesFetched(styles));
   } catch (error: unknown) {
-    dispatch(fetchStylesFailed(getErrorMessage(error)));
+    dispatch(fetchStylesFailed('Failed to fetch Styles'));
   }
 };

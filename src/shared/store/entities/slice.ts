@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import type { IService, IBrand, IStyle } from 'shared/api';
+import type { IEntity } from 'shared/api';
 
 import type { IEntitiesInitialState } from './types';
 
@@ -30,7 +30,7 @@ export const entitiesSlice = createSlice({
       state.services.isLoading = true;
       state.services.error = null;
     },
-    servicesFetched: (state, action: PayloadAction<IService[]>) => {
+    servicesFetched: (state, action: PayloadAction<IEntity[]>) => {
       state.services.data = action.payload;
       state.services.isLoading = false;
     },
@@ -42,7 +42,7 @@ export const entitiesSlice = createSlice({
       state.brands.isLoading = true;
       state.brands.error = null;
     },
-    brandsFetched: (state, action: PayloadAction<IBrand[]>) => {
+    brandsFetched: (state, action: PayloadAction<IEntity[]>) => {
       state.brands.data = action.payload;
       state.brands.isLoading = false;
     },
@@ -54,7 +54,7 @@ export const entitiesSlice = createSlice({
       state.styles.isLoading = true;
       state.styles.error = null;
     },
-    stylesFetched: (state, action: PayloadAction<IStyle[]>) => {
+    stylesFetched: (state, action: PayloadAction<IEntity[]>) => {
       state.styles.data = action.payload;
       state.styles.isLoading = false;
     },

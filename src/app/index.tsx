@@ -13,7 +13,7 @@ const App = () => {
     <div className="h-screen w-screen bg-slate-50">
       <AppPreparation />
       <Routing />
-      <ToastContainer />
+      <ToastContainer position="bottom-right" />
     </div>
   );
 };

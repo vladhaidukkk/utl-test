@@ -1,13 +1,13 @@
-import type { IService, IBrand, IStyle } from 'shared/api';
+import type { IEntity } from 'shared/api';
 
-interface IEntityState<T> {
+interface IEntityState {
   isLoading: boolean;
-  data: T[];
+  data: IEntity[];
   error: string | null;
 }
 
 export interface IEntitiesInitialState {
-  services: IEntityState<IService>;
-  brands: IEntityState<IBrand>;
-  styles: IEntityState<IStyle>;
+  services: IEntityState;
+  brands: IEntityState;
+  styles: IEntityState;
 }

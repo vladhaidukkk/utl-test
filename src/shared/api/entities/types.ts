@@ -1,17 +1,11 @@
-export interface IService {
+export interface IEntity {
   id: number;
   label: string;
   slug: string;
 }
 
-export interface IBrand {
-  id: number;
-  label: string;
-  slug: string;
-}
-
-export interface IStyle {
-  id: number;
-  label: string;
-  slug: string;
+export enum Entities {
+  Services = 'services',
+  Brands = 'brands',
+  Styles = 'styles',
 }

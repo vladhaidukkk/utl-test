@@ -29,6 +29,7 @@
         "unnamedComponents": "arrow-function"
       }
     ],
+    "react/require-default-props": 0,
     "import/prefer-default-export": 0,
     "import-helpers/order-imports": [
       "error",
@@ -37,7 +38,8 @@
         "groups": [
           "/^react/",
           "module",
-          ["/^app/", "/^pages/", "/^features/", "/^shared/"],
+          "/^@heroicons/",
+          ["/^app/", "/^pages/", "/^components/", "/^shared/"],
           ["parent", "sibling", "index"],
           "/.+\\.css$/"
         ],
