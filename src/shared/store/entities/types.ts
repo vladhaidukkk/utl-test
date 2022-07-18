@@ -10,4 +10,11 @@ export interface IEntitiesInitialState {
   services: IEntityState;
   brands: IEntityState;
   styles: IEntityState;
+  active: {
+    isLoading: boolean;
+    service: IEntity | null;
+    brand: IEntity | null;
+    style: IEntity | null;
+    error: string | null;
+  };
 }

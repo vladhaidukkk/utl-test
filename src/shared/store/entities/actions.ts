@@ -1,4 +1,4 @@
-import { getServices, getBrands, getStyles } from 'shared/api';
+import { getServices, getBrands, getStyles, IGetActiveParams, getActive } from 'shared/api';
 
 import type { AppDispatch } from '../types';
 import { entitiesSlice } from './slice';
@@ -13,6 +13,9 @@ const {
   fetchStylesFailed,
   fetchStylesStarted,
   stylesFetched,
+  fetchActiveStarted,
+  activeFetched,
+  fetchActiveFailed,
 } = entitiesSlice.actions;
 
 export const fetchServices = () => async (dispatch: AppDispatch) => {
@@ -54,5 +57,17 @@ export const fetchStyles = () => async (dispatch: AppDispatch) => {
     dispatch(stylesFetched(styles));
   } catch (error: unknown) {
     dispatch(fetchStylesFailed('Failed to fetch Styles'));
+  }
+};
+
+export const fetchActive = (params: IGetActiveParams) => async (dispatch: AppDispatch) => {
+  try {
+    dispatch(fetchActiveStarted());
+
+    const { data } = await getActive(params);
+
+    dispatch(activeFetched(data));
+  } catch {
+    dispatch(fetchActiveFailed('Failed to fetch active terms'));
   }
 };

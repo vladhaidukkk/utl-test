@@ -1,1 +1,1 @@
-export const API_ENDPOINT = 'https://autobooking.com/api/test/v1';
+export const API_ENDPOINT = 'https://onboarding.art-code.team/api/test/v1';

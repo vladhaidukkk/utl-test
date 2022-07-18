@@ -20,6 +20,13 @@ const initialState: IEntitiesInitialState = {
     data: [],
     error: null,
   },
+  active: {
+    isLoading: false,
+    service: null,
+    brand: null,
+    style: null,
+    error: null,
+  },
 };
 
 export const entitiesSlice = createSlice({
@@ -61,6 +68,27 @@ export const entitiesSlice = createSlice({
     fetchStylesFailed: (state, action: PayloadAction<string>) => {
       state.styles.error = action.payload;
       state.styles.isLoading = false;
+    },
+    fetchActiveStarted: (state) => {
+      state.active.isLoading = true;
+      state.active.error = null;
+    },
+    activeFetched: (
+      state,
+      action: PayloadAction<{
+        service: IEntity | null;
+        brand: IEntity | null;
+        style: IEntity | null;
+      }>
+    ) => {
+      state.active.service = action.payload.service;
+      state.active.brand = action.payload.brand;
+      state.active.style = action.payload.style;
+      state.active.isLoading = false;
+    },
+    fetchActiveFailed: (state, action: PayloadAction<string>) => {
+      state.active.error = action.payload;
+      state.active.isLoading = false;
     },
   },
 });

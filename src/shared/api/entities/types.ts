@@ -4,7 +4,13 @@ export interface IEntity {
   slug: string;
 }
 
-export enum Entities {
+export interface IGetActiveParams {
+  service_slug?: string;
+  brand_slug?: string;
+  style_slug?: string;
+}
+
+export enum EntitiesLabels {
   Services = 'services',
   Brands = 'brands',
   Styles = 'styles',

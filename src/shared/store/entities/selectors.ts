@@ -11,3 +11,7 @@ export const selectBrandsEntity = (state: RootState) => {
 export const selectStylesEntity = (state: RootState) => {
   return state.entities.styles;
 };
+
+export const selectActiveEntities = (state: RootState) => {
+  return state.entities.active;
+};

@@ -3,16 +3,17 @@ import { useState } from 'react';
 
 import { ChevronDownIcon, ExclamationIcon } from '@heroicons/react/solid';
 
-import type { IEntity, Entities } from 'shared/api';
+import type { IEntity, EntitiesLabels } from 'shared/api';
 import { cn } from 'shared/helpers';
+import { Loader } from 'shared/uikit';
 
 interface IDropdownList {
-  label: Entities;
+  label: EntitiesLabels;
   data: IEntity[];
   isLoading: boolean;
   error?: string | null;
-  onSelect: (label: Entities, slug: string) => void;
-  onMatch: (label: Entities, slug: string) => boolean;
+  onSelect: (slug: string) => void;
+  onMatch: (slug: string) => boolean;
 }
 
 export const DropdownList: FC<IDropdownList> = ({
@@ -75,8 +76,8 @@ export const DropdownList: FC<IDropdownList> = ({
                     id={key}
                     type="checkbox"
                     name={label}
-                    onChange={() => onSelect(label, item.slug)}
-                    checked={onMatch(label, item.slug)}
+                    onChange={() => onSelect(item.slug)}
+                    checked={onMatch(item.slug)}
                   />
                   <span>{item.label}</span>
                 </label>
@@ -85,26 +86,7 @@ export const DropdownList: FC<IDropdownList> = ({
           })
         ) : (
           <div className="flex h-full w-full items-center justify-center">
-            <svg
-              className="mr-3 h-5 w-5 animate-spin text-slate-400"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-            >
-              <circle
-                className="opacity-25"
-                cx="12"
-                cy="12"
-                r="10"
-                stroke="currentColor"
-                strokeWidth="4"
-              />
-              <path
-                className="opacity-75"
-                fill="currentColor"
-                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-              />
-            </svg>
+            <Loader />
           </div>
         )}
       </ul>
