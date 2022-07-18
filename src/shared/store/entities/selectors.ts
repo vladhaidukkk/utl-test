@@ -1,11 +1,11 @@
 import type { RootState } from '../types';
 
-export const selectTermsEntity = (state: RootState) => {
-  return state.entities.terms;
+export const selectServicesEntity = (state: RootState) => {
+  return state.entities.services;
 };
 
-export const selectBrandsTermsEntity = (state: RootState) => {
-  return state.entities.brandsTerms;
+export const selectBrandsEntity = (state: RootState) => {
+  return state.entities.brands;
 };
 
 export const selectStylesEntity = (state: RootState) => {

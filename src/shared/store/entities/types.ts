@@ -1,4 +1,4 @@
-import type { IBrandTerm, IStyle, ITerm } from 'shared/api';
+import type { IService, IBrand, IStyle } from 'shared/api';
 
 interface IEntityState<T> {
   isLoading: boolean;
@@ -7,7 +7,7 @@ interface IEntityState<T> {
 }
 
 export interface IEntitiesInitialState {
-  terms: IEntityState<ITerm>;
-  brandsTerms: IEntityState<IBrandTerm>;
+  services: IEntityState<IService>;
+  brands: IEntityState<IBrand>;
   styles: IEntityState<IStyle>;
 }

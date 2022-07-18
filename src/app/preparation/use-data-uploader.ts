@@ -1,13 +1,13 @@
 import { useEffect } from 'react';
 
-import { fetchTerms, fetchBrandsTerms, fetchStyles, useAppDispatch } from 'shared/store';
+import { fetchServices, fetchBrands, fetchStyles, useAppDispatch } from 'shared/store';
 
 export const useDataUploader = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(fetchTerms());
-    dispatch(fetchBrandsTerms());
+    dispatch(fetchServices());
+    dispatch(fetchBrands());
     dispatch(fetchStyles());
   }, []);
 

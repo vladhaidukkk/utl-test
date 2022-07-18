@@ -1,46 +1,46 @@
-import { getBrandsTerms, getStyles, getTerms } from 'shared/api';
+import { getServices, getBrands, getStyles } from 'shared/api';
 import { getErrorMessage } from 'shared/helpers';
 
 import type { AppDispatch } from '../types';
 import { entitiesSlice } from './slice';
 
 const {
-  fetchTermsStarted,
-  termsFetched,
-  fetchTermsFailed,
-  fetchBrandsTermsStarted,
-  brandsTermsFetched,
+  fetchServicesStarted,
+  servicesFetched,
+  fetchServicesFailed,
+  fetchBrandsStarted,
+  brandsFetched,
+  fetchBrandsFailed,
   fetchStylesFailed,
   fetchStylesStarted,
   stylesFetched,
-  fetchBrandsTermsFailed,
 } = entitiesSlice.actions;
 
-export const fetchTerms = () => async (dispatch: AppDispatch) => {
+export const fetchServices = () => async (dispatch: AppDispatch) => {
   try {
-    dispatch(fetchTermsStarted());
+    dispatch(fetchServicesStarted());
 
     const {
       data: { data: terms },
-    } = await getTerms();
+    } = await getServices();
 
-    dispatch(termsFetched(terms));
+    dispatch(servicesFetched(terms));
   } catch (error: unknown) {
-    dispatch(fetchTermsFailed(getErrorMessage(error)));
+    dispatch(fetchServicesFailed(getErrorMessage(error)));
   }
 };
 
-export const fetchBrandsTerms = () => async (dispatch: AppDispatch) => {
+export const fetchBrands = () => async (dispatch: AppDispatch) => {
   try {
-    dispatch(fetchBrandsTermsStarted());
+    dispatch(fetchBrandsStarted());
 
     const {
       data: { data: brandsTerms },
-    } = await getBrandsTerms();
+    } = await getBrands();
 
-    dispatch(brandsTermsFetched(brandsTerms));
+    dispatch(brandsFetched(brandsTerms));
   } catch (error: unknown) {
-    dispatch(fetchBrandsTermsFailed(getErrorMessage(error)));
+    dispatch(fetchBrandsFailed(getErrorMessage(error)));
   }
 };
 

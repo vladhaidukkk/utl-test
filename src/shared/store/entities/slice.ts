@@ -1,16 +1,16 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import type { IBrandTerm, IStyle, ITerm } from 'shared/api';
+import type { IService, IBrand, IStyle } from 'shared/api';
 
 import type { IEntitiesInitialState } from './types';
 
 const initialState: IEntitiesInitialState = {
-  terms: {
+  services: {
     isLoading: true,
     data: [],
     error: null,
   },
-  brandsTerms: {
+  brands: {
     isLoading: true,
     data: [],
     error: null,
@@ -26,29 +26,29 @@ export const entitiesSlice = createSlice({
   name: 'entities',
   initialState,
   reducers: {
-    fetchTermsStarted: (state) => {
-      state.terms.isLoading = true;
-      state.terms.error = null;
+    fetchServicesStarted: (state) => {
+      state.services.isLoading = true;
+      state.services.error = null;
     },
-    termsFetched: (state, action: PayloadAction<ITerm[]>) => {
-      state.terms.data = action.payload;
-      state.terms.isLoading = false;
+    servicesFetched: (state, action: PayloadAction<IService[]>) => {
+      state.services.data = action.payload;
+      state.services.isLoading = false;
     },
-    fetchTermsFailed: (state, action: PayloadAction<string>) => {
-      state.terms.error = action.payload;
-      state.terms.isLoading = false;
+    fetchServicesFailed: (state, action: PayloadAction<string>) => {
+      state.services.error = action.payload;
+      state.services.isLoading = false;
     },
-    fetchBrandsTermsStarted: (state) => {
-      state.brandsTerms.isLoading = true;
-      state.brandsTerms.error = null;
+    fetchBrandsStarted: (state) => {
+      state.brands.isLoading = true;
+      state.brands.error = null;
     },
-    brandsTermsFetched: (state, action: PayloadAction<IBrandTerm[]>) => {
-      state.brandsTerms.data = action.payload;
-      state.brandsTerms.isLoading = false;
+    brandsFetched: (state, action: PayloadAction<IBrand[]>) => {
+      state.brands.data = action.payload;
+      state.brands.isLoading = false;
     },
-    fetchBrandsTermsFailed: (state, action: PayloadAction<string>) => {
-      state.brandsTerms.error = action.payload;
-      state.brandsTerms.isLoading = false;
+    fetchBrandsFailed: (state, action: PayloadAction<string>) => {
+      state.brands.error = action.payload;
+      state.brands.isLoading = false;
     },
     fetchStylesStarted: (state) => {
       state.styles.isLoading = true;

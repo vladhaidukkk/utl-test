@@ -1,23 +1,27 @@
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import { toast } from 'react-toastify';
 
 import {
-  selectTermsEntity,
-  selectBrandsTermsEntity,
   selectStylesEntity,
+  selectServicesEntity,
+  selectBrandsEntity,
   useAppSelector,
 } from 'shared/store';
 
 export const useErrorCatcher = () => {
-  const { error: termsError } = useAppSelector(selectTermsEntity);
-  const { error: brandsTermsError } = useAppSelector(selectBrandsTermsEntity);
+  const { error: servicesError } = useAppSelector(selectServicesEntity);
+  const { error: brandsError } = useAppSelector(selectBrandsEntity);
   const { error: stylesError } = useAppSelector(selectStylesEntity);
 
+  const deps = useMemo(() => {
+    return [servicesError, brandsError, stylesError];
+  }, [servicesError, brandsError, stylesError]);
+
   useEffect(() => {
-    const errors = [termsError, brandsTermsError, stylesError].filter((error) => error);
+    const errors = deps.filter((error) => error);
 
     errors.forEach((error) => toast.error(error));
-  }, [termsError, brandsTermsError, stylesError]);
+  }, deps);
 
   return null;
 };

@@ -1,13 +1,13 @@
 import type { AxiosResponse } from 'axios';
 
 import { api } from '../api';
-import type { IBrandTerm, IStyle, ITerm } from './types';
+import type { IService, IBrand, IStyle } from './types';
 
-export const getTerms = (): Promise<AxiosResponse<{ data: ITerm[] }>> => {
+export const getServices = (): Promise<AxiosResponse<{ data: IService[] }>> => {
   return api.get('/search/terms');
 };
 
-export const getBrandsTerms = (): Promise<AxiosResponse<{ data: IBrandTerm[] }>> => {
+export const getBrands = (): Promise<AxiosResponse<{ data: IBrand[] }>> => {
   return api.get('/search/brands_terms');
 };
 

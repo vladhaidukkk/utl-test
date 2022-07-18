@@ -1,10 +1,10 @@
-export interface ITerm {
+export interface IService {
   id: number;
   label: string;
   slug: string;
 }
 
-export interface IBrandTerm {
+export interface IBrand {
   id: number;
   label: string;
   slug: string;

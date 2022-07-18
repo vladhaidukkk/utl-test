@@ -10,7 +10,7 @@ import './index.css';
 
 const App = () => {
   return (
-    <div className="h-full w-full bg-red-50">
+    <div className="h-screen w-screen bg-slate-50">
       <AppPreparation />
       <Routing />
       <ToastContainer />
