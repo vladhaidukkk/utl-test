@@ -1,7 +1,21 @@
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
+
+import { Routing } from 'pages';
+
+import { AppPreparation } from './preparation';
+import { withProviders } from './providers';
+
 import './index.css';
 
 const App = () => {
-  return <h1 className="text-2xl text-blue-600">Hello</h1>;
+  return (
+    <div className="h-full w-full bg-red-50">
+      <AppPreparation />
+      <Routing />
+      <ToastContainer />
+    </div>
+  );
 };
 
-export default App;
+export default withProviders(App);

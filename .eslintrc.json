@@ -20,6 +20,7 @@
   },
   "plugins": ["react", "@typescript-eslint", "eslint-plugin-import-helpers"],
   "rules": {
+    "no-param-reassign": 0,
     "react/react-in-jsx-scope": 0,
     "react/function-component-definition": [
       2,
@@ -33,7 +34,13 @@
       "error",
       {
         "newlinesBetween": "always",
-        "groups": ["/^react/", "module", ["/^app/"], ["parent", "sibling", "index"], "/.+\\.css$/"],
+        "groups": [
+          "/^react/",
+          "module",
+          ["/^app/", "/^pages/", "/^features/", "/^shared/"],
+          ["parent", "sibling", "index"],
+          "/.+\\.css$/"
+        ],
         "alphabetize": { "order": "asc", "ignoreCase": true }
       }
     ]
